@@ -28,13 +28,13 @@
                         @foreach ($supports->items() as $support)
                         <tr>
                             <td class="px-4 py-2 text-sm font-medium whitespace-nowrap dark:text-white">
-                                {{ $support->subject }}
+                                {{\Illuminate\Support\Str::limit ($support->subject, 30) }}
                             </td>
                             <td class="px-12 py-2 text-sm font-medium whitespace-nowrap">
                                 <x-status-support :status="$support->status"></x-status-support>
                             </td>
                             <td class="px-4 py-2 text-sm whitespace-nowrap text-gray-500 dark:text-gray-400">
-                                {{ \Illuminate\Support\Str::limit($support->body, 30) }}
+                                {{\Illuminate\Support\Str::limit($support->body, 30) }}
                             </td>
                             <td class="px-4 py-2 text-sm whitespace-nowrap">
                                 <div class="flex items-center">
@@ -52,11 +52,12 @@
                                     Editar
                                 </a>
                                 @endcan
-                                <a href="{{ route('replies.index', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                                <a href="{{ route('replies.index', $support->id) }}" class="px-1 py-1 text-gray-500 transition-colors duration-200 rounded-lg flex items-center">
+                                    Ver
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-1">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                                     </svg>
-                                </a>
+                                </a>                                                               
                             </td>
                         </tr>
                         @endforeach
